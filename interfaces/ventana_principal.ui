@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*
+ * QT STYLE SHEET (CSS) COMPLETO - TEMA OSCURO
+ * Apariencia: Profesional, Oscura y de Alto Contraste
+ */
+
+/*********************************
+ * 1. ESTILOS BASE (QWidget)
+ *********************************/
+QWidget {
+    /* Fondo principal: Gris muy oscuro */
+    background-color: #2e3436; 
+    /* Color de texto: Blanco brillante */
+    color: #ffffff;
+    /* Fuente moderna y legible */
+    font-family: &quot;Segoe UI&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+}
+
+/*********************************
+ * 2. ESTILOS PARA QMENU Y QACTION
+ *********************************/
+
+/* Contenedor del menú desplegable */
+QMenu {
+    /* Fondo del menú: Ligeramente más claro que la base, para separarlo */
+    background-color: #3e4447;
+    /* Borde sutil */
+    border: 1px solid #5a5f61;
+    /* Relleno interno */
+    padding: 5px;
+    /* Sombra opcional (Qt lo maneja automáticamente o requiere propiedades especiales) */
+}
+
+/* Elementos individuales del menú (QAction) */
+QMenu::item {
+    /* Color de texto */
+    color: #ffffff;
+    /* Relleno */
+    padding: 5px 20px 5px 10px;
+    margin: 1px 0px;
+    border-radius: 3px;
+}
+
+/* Estado al pasar el ratón (Hover) y seleccionar */
+QMenu::item:selected {
+    /* Fondo de resaltado: Azul o cian oscuro, vibrante pero no demasiado brillante */
+    background-color: #0078d4; 
+    /* Color de texto al seleccionar: Blanco */
+    color: #ffffff;
+}
+
+/* Estilo para items deshabilitados */
+QMenu::item:disabled {
+    /* Color atenuado */
+    color: #888888;
+}
+
+/* Separadores entre grupos de acciones */
+QMenu::separator {
+    /* Línea delgada de un gris intermedio */
+    height: 1px;
+    background-color: #5a5f61;
+    /* Espacio arriba y abajo del separador */
+    margin: 6px 0px 6px 0px;
+}
+
+/*********************************
+ * 3. ESTILOS PARA QSTATUSBAR
+ *********************************/
+
+QStatusBar {
+    /* Fondo: Similar o ligeramente más oscuro que la base */
+    background-color: #2a2a2a; 
+    /* Borde superior para una separación clara */
+    border-top: 1px solid #5a5f61;
+    /* Color de texto */
+    color: #cccccc;
+    /* Relleno */
+    padding: 3px; 
+}
+
+/* Estilo para los widgets incrustados en la barra de estado */
+QStatusBar::item {
+    border: none;
+    padding: 0px 8px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuModelos">
+    <property name="title">
+     <string>Modelos</string>
+    </property>
+    <addaction name="actionBasicos"/>
+    <addaction name="separator"/>
+    <addaction name="actionLangchain"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <addaction name="menuModelos"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionBasicos">
+   <property name="text">
+    <string>Básicos</string>
+   </property>
+  </action>
+  <action name="actionLangchain">
+   <property name="text">
+    <string>Langchain</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

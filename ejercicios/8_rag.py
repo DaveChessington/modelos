@@ -18,7 +18,7 @@ load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
 # --- 1. Cargar documento ---
-pdf_path = "documentos/fuente.pdf"
+pdf_path = r"documentos\reglamento_interno.pdf"
 loader = PyPDFLoader(pdf_path)
 pages = loader.load()
 print(f"Documento cargado con {len(pages)} páginas")
@@ -78,4 +78,4 @@ def preguntar(pregunta: str):
 if __name__ == "__main__":
     preguntar("¿De qué trata el documento?")
     preguntar("¿Qué conclusiones se mencionan?")
-
+ 

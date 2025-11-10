@@ -52,5 +52,5 @@ print(ejecutar_con_memoria("¿Qué me dijiste primero?"))
 print(ejecutar_con_memoria("¿Puedes resumir nuestra conversación?"))
 print(ejecutar_con_memoria("¿Cuál es mi nombre completo?"))
 print(ejecutar_con_memoria("¿Qué temas hemos tocado hasta ahora?"))
-
+ 
 

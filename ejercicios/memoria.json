@@ -47,6 +47,30 @@
     {
       "type": "ai",
       "content": "Sí, Alejandro, recuerdo perfectamente. Te llamas **Alejandro**."
+    },
+    {
+      "type": "human",
+      "content": "Hola, soy Alejandro."
+    },
+    {
+      "type": "ai",
+      "content": "¡Hola de nuevo, Alejandro! Ya lo sabía, te tengo bien presente. Es un placer seguir conversando contigo."
+    },
+    {
+      "type": "human",
+      "content": "¿Recuerdas cómo me llamo?"
+    },
+    {
+      "type": "ai",
+      "content": "Sí, Alejandro, recuerdo perfectamente. Te llamas **Alejandro**."
+    },
+    {
+      "type": "human",
+      "content": "¿Qué hablamos antes?"
+    },
+    {
+      "type": "ai",
+      "content": "Claro, Alejandro. Aquí tienes un resumen de toda nuestra conversación hasta ahora:\n\n1.  Te presentaste como **Alejandro**.\n2.  Te di la bienvenida y te pregunté en qué podía ayudarte.\n3.  Me preguntaste si recordaba tu nombre.\n4.  Confirmé que sí, que te llamas Alejandro.\n5.  Me preguntaste qué habíamos hablado antes.\n6.  Te di un resumen de los puntos anteriores (tu presentación y mi confirmación de tu nombre).\n7.  Volviste a preguntarme si recordaba tu nombre.\n8.  Confirmé de nuevo que sí, que te llamas Alejandro.\n9.  Volviste a decir \"Hola, soy Alejandro\".\n10. Te saludé de nuevo, confirmando que ya recordaba tu nombre.\n11. Me preguntaste una vez más si recordaba tu nombre.\n12. Confirmé nuevamente que sí, que te llamas Alejandro.\n\nEso es todo lo que hemos conversado hasta este momento."
     }
   ]
 }
