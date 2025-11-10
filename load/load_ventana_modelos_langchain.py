@@ -44,6 +44,9 @@ class Load_ventana_modelos_Langchain(QtWidgets.QDialog):
         respuesta=ia.preguntar_tema(self.tema)
         self.output_response.setText(respuesta)
 
+    def sequentialchain():
+        pass
+
     # 6.- mover ventana
     def mousePressEvent(self, event):
         self.clickPosition = event.globalPos()
