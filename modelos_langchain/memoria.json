@@ -1,0 +1,44 @@
+{
+  "history": [
+    {
+      "type": "human",
+      "content": "Hola, soy David."
+    },
+    {
+      "type": "ai",
+      "content": "¡Hola, David! Es un placer conocerte. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+      "type": "human",
+      "content": "¿Puedes contarme un chiste?"
+    },
+    {
+      "type": "ai",
+      "content": "¡Claro! Aquí tienes uno: ¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter."
+    },
+    {
+      "type": "human",
+      "content": "Jajaja, muy bueno. ¿Puedes recomendarme un libro?"
+    },
+    {
+      "type": "ai",
+      "content": "Por supuesto, te recomiendo 'Cien años de soledad' de Gabriel García Márquez. Es una obra maestra de la literatura latinoamericana."
+    },
+    {
+      "type": "human",
+      "content": "sabes quien soy?"
+    },
+    {
+      "type": "ai",
+      "content": "Sí, recuerdo que eres David."
+    },
+    {
+      "type": "human",
+      "content": "de que hablamos?"
+    },
+    {
+      "type": "ai",
+      "content": "Claro, hemos hablado de lo siguiente:\n\n1.  Me dijiste que te llamas **David**.\n2.  Te conté un **chiste** sobre pájaros y redes sociales.\n3.  Te recomendé un **libro**: 'Cien años de soledad' de Gabriel García Márquez."
+    }
+  ]
+}

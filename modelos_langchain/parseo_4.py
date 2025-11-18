@@ -16,21 +16,27 @@ logging.getLogger("grpc").setLevel(logging.ERROR)
 load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
-# Modelo
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
+class Parse:
+    def __init__(self):
+        # Modelo
+        self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
 
-# Prompt
-prompt = PromptTemplate.from_template(
-    "Resume el siguiente texto en una oración clara y concisa:\n\n{input}"
-)
+    def parse_prompt(self,input_inicial,prompt):
+        # Prompt
+        self.prompt = PromptTemplate.from_template(
+            prompt+" {input}"
+        )
 
-# Parser para obtener texto limpio
-parser = StrOutputParser()
+        # Parser para obtener texto limpio
+        parser = StrOutputParser()
 
-# Encadenamiento moderno (RunnableSequence)
-chain = prompt | llm | parser
+        # Encadenamiento moderno (RunnableSequence)
+        self.chain = self.prompt | self.llm | parser
 
-# Ejecutar
-resultado = chain.invoke("La inteligencia artificial está transformando la educación a nivel global...")
+        # Ejecutar
+        self.resultado = self.chain.invoke(input_inicial)
 
-print(resultado)
+        return self.resultado
+
+print(Parse().parse_prompt("traduce al inglés","""Las ciencias de la computación son un campo de estudio que se enfoca en las bases teóricas de la información y la computación, así como en su aplicación para diseñar y desarrollar sistemas computacionales. El estudio abarca desde los algoritmos y la teoría de la computación hasta la inteligencia artificial, el hardware y el software, con el objetivo de resolver problemas complejos. 
+"""))

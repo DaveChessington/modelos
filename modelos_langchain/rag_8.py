@@ -11,71 +11,82 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough
+from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 
 # --- Cargar API Key de Gemini (solo para el modelo generativo) ---
 load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
-# --- 1. Cargar documento ---
-pdf_path = r"documentos\reglamento_interno.pdf"
-loader = PyPDFLoader(pdf_path)
-pages = loader.load()
-print(f"Documento cargado con {len(pages)} páginas")
-
-# --- 2. Dividir texto ---
-splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-docs = splitter.split_documents(pages)
-print(f"Texto dividido en {len(docs)} fragmentos")
-
-# --- 3. Crear embeddings locales ---
-print("Generando embeddings locales con HuggingFace (esto puede tardar unos segundos la primera vez)...")
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-
-# Crear o cargar índice FAISS (para no recalcular embeddings cada vez)
-INDEX_PATH = "faiss_local_index"
-
-if os.path.exists(INDEX_PATH):
-    print("Cargando índice FAISS existente...")
-    vectorstore = FAISS.load_local(INDEX_PATH, embeddings, allow_dangerous_deserialization=True)
-else:
-    print("Creando índice FAISS nuevo...")
-    vectorstore = FAISS.from_documents(docs, embedding=embeddings)
-    vectorstore.save_local(INDEX_PATH)
-
-retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
-
-# --- 4. Modelo LLM (Gemini solo para generación, no embeddings) ---
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.5)
-
-# --- 5. Prompt ---
-template = """
-Usa el siguiente contexto para responder la pregunta del usuario.
+class Rag:
+    def __init__(self,
+                 input_inicial='''Usa el siguiente contexto para responder la pregunta del usuario.
 Si no hay suficiente información, responde: "No tengo información suficiente en el documento."
+''',
+documento=r"documentos\reglamento_interno.pdf"):
+        # --- 4. Modelo LLM (Gemini solo para generación, no embeddings) ---
+        self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.5)
 
-Contexto:
-{context}
+        # --- 5. Prompt ---
+        template = """
+        {input}
+        Contexto:
+        {context}
+        Pregunta:
+        {question}
+        """
+        self.prompt = ChatPromptTemplate.from_template(template)
 
-Pregunta:
-{question}
-"""
-prompt = ChatPromptTemplate.from_template(template)
+        self.procesar_documento(documento)
 
-# --- 6. Construir el RAG Chain moderno ---
-rag_chain = (
-    {"context": retriever, "question": RunnablePassthrough()}
-    | prompt
-    | llm
-)
+        # --- 6. Construir el RAG Chain moderno ---
+        self.rag_chain = (
+            {"input":RunnableLambda(lambda _: input_inicial),"context": self.retriever, "question": RunnablePassthrough()}
+            | self.prompt
+            | self.llm
+        )
 
-# --- 7. Función para preguntar ---
-def preguntar(pregunta: str):
-    print(f"\n Pregunta: {pregunta}")
-    respuesta = rag_chain.invoke(pregunta)
-    print("Respuesta:", respuesta.content.strip())
+    # --- 7. Función para preguntar ---
+    def preguntar(self,pregunta: str):
+        respuesta = self.rag_chain.invoke(pregunta)
+        return "Respuesta IA:"+respuesta.content.strip()
+
+    def procesar_documento(self,pdf_path):
+        # --- 1. Cargar documento ---
+        loader = PyPDFLoader(pdf_path)
+        pages = loader.load()
+        print(f"Documento cargado con {len(pages)} páginas")
+
+        # --- 2. Dividir texto ---
+        splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+        docs = splitter.split_documents(pages)
+        print(f"Texto dividido en {len(docs)} fragmentos")
+
+        # --- 3. Crear embeddings locales ---
+        print("Generando embeddings locales con HuggingFace (esto puede tardar unos segundos la primera vez)...")
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+        # Crear o cargar índice FAISS (para no recalcular embeddings cada vez)
+        INDEX_PATH = "faiss_local_index"
+
+        if os.path.exists(INDEX_PATH):
+            print("Cargando índice FAISS existente...")
+            vectorstore = FAISS.load_local(INDEX_PATH, embeddings, allow_dangerous_deserialization=True)
+        else:
+            print("Creando índice FAISS nuevo...")
+            vectorstore = FAISS.from_documents(docs, embedding=embeddings)
+            vectorstore.save_local(INDEX_PATH)
+
+        self.retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+
+    def chat(self):
+        while True:
+            prompt=input("Tú: ")
+            if prompt.strip().lower()=="salir":
+                break
+            self.preguntar(prompt)
 
 # --- Ejemplo de uso ---
 if __name__ == "__main__":
-    preguntar("¿De qué trata el documento?")
-    preguntar("¿Qué conclusiones se mencionan?")
+    chat=Rag()
+    chat.chat()
  
