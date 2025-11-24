@@ -1,5 +1,6 @@
 from langchain.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import RunnablePassthrough
 from dotenv import load_dotenv
@@ -14,12 +15,19 @@ logging.getLogger("grpc").setLevel(logging.ERROR)
 
 # Cargar API Key
 load_dotenv()
-os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
 class ParseSteps:
-    def __init__(self):
+    def __init__(self,ai="google"):
         # Modelo
-        self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
+        if ai.strip().lower()=="google":
+            os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+            self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
+        else:
+            os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+            self.llm = ChatOpenAI(
+            model="gpt-4.1",   # o el que quieras: gpt-4.1, gpt-4.1-preview, o3-mini...
+            temperature=0.7
+            )
 
     def parse_prompts(self,input_inicial,prompts:list[str]):
         self.prompts=[]
@@ -48,4 +56,4 @@ prompts=[
     "Traduce la lista al inglés:"
 ]
 
-print(ParseSteps().parse_prompts(input_inicial,prompts))
+#print(ParseSteps().parse_prompts(input_inicial,prompts))

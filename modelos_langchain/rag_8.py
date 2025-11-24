@@ -10,6 +10,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 
@@ -22,10 +23,18 @@ class Rag:
                  input_inicial='''Usa el siguiente contexto para responder la pregunta del usuario.
 Si no hay suficiente información, responde: "No tengo información suficiente en el documento."
 ''',
-documento=r"documentos\reglamento_interno.pdf"):
+documento=r"documentos\reglamento_interno.pdf",ai="google"):
         # --- 4. Modelo LLM (Gemini solo para generación, no embeddings) ---
-        self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.5)
-
+        # Modelo
+        if ai.strip().lower()=="google":
+            os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+            self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
+        else:
+            os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+            self.llm = ChatOpenAI(
+            model="gpt-4.1",   # o el que quieras: gpt-4.1, gpt-4.1-preview, o3-mini...
+            temperature=0.7
+            )
         # --- 5. Prompt ---
         template = """
         {input}
@@ -48,6 +57,7 @@ documento=r"documentos\reglamento_interno.pdf"):
     # --- 7. Función para preguntar ---
     def preguntar(self,pregunta: str):
         respuesta = self.rag_chain.invoke(pregunta)
+        #print(respuesta.content)
         return "Respuesta IA:"+respuesta.content.strip()
 
     def procesar_documento(self,pdf_path):
@@ -83,10 +93,11 @@ documento=r"documentos\reglamento_interno.pdf"):
             prompt=input("Tú: ")
             if prompt.strip().lower()=="salir":
                 break
-            self.preguntar(prompt)
+            print(self.preguntar(prompt))
 
 # --- Ejemplo de uso ---
+"""
 if __name__ == "__main__":
     chat=Rag()
-    chat.chat()
+    chat.chat()"""
  

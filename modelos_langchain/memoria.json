@@ -39,6 +39,14 @@
     {
       "type": "ai",
       "content": "Claro, hemos hablado de lo siguiente:\n\n1.  Me dijiste que te llamas **David**.\n2.  Te conté un **chiste** sobre pájaros y redes sociales.\n3.  Te recomendé un **libro**: 'Cien años de soledad' de Gabriel García Márquez."
+    },
+    {
+      "type": "human",
+      "content": "recurdas nuestra conversación"
+    },
+    {
+      "type": "ai",
+      "content": "Sí, recuerdo toda nuestra conversación.\n\nEmpezamos cuando te presentaste como **David**. Luego te conté un **chiste** sobre pájaros y Twitter, que te hizo reír. Después, te recomendé el libro **\"Cien años de soledad\"** de Gabriel García Márquez. Finalmente, me preguntaste si sabía quién eras (y te confirmé que eres David) y de qué habíamos hablado, lo cual te resumí."
     }
   ]
 }

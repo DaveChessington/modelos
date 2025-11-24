@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>676</width>
-    <height>534</height>
+    <width>675</width>
+    <height>572</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -526,7 +526,7 @@ QToolTip {
          <item>
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="currentIndex">
-            <number>0</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="llmchain1">
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -567,12 +567,32 @@ QToolTip {
              <item>
               <widget class="QLabel" name="label_3">
                <property name="text">
-                <string>2</string>
+                <string>Contexto previo (Eres un profesor univesitario)</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="input_prompt_2"/>
+              <widget class="QLineEdit" name="input_contexto_2"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>Instrucción 1 (Explica langchain a un grupo de la materia de IA)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="input_instruccion_1"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>Instrucción 2 (Resume en una frase)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="input_instruccion_2"/>
              </item>
              <item>
               <widget class="QPushButton" name="boton_enviar_2">

@@ -1,5 +1,6 @@
 from langchain.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
 import logging
@@ -15,9 +16,17 @@ load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
 class SimpleSequentialChain:
-    def __init__(self):
+    def __init__(self,ai="google"):
         # Modelo
-        self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
+        if ai.strip().lower()=="google":
+            os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+            self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
+        else:
+            os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+            self.llm = ChatOpenAI(
+            model="gpt-4.1",   # o el que quieras: gpt-4.1, gpt-4.1-preview, o3-mini...
+            temperature=0.7
+            )
 
     def encadenar(self,input_inicial,prompt_1,prompt_2):
         # Prompts (usar {input}, no {texto})
@@ -39,4 +48,4 @@ input_inicial="Serie de One punch man"
 prompt1="resume la primera temporada"
 prompt2="traduce al japones con subtitulos en inglés"
 
-print(SimpleSequentialChain().encadenar(input_inicial,prompt1,prompt2))
+#print(SimpleSequentialChain().encadenar(input_inicial,prompt1,prompt2))

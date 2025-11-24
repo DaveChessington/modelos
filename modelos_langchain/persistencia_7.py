@@ -1,5 +1,6 @@
 import os, json
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.memory import ConversationBufferMemory
 from dotenv import load_dotenv
@@ -9,10 +10,17 @@ load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
 class ChatMemoriaArchivo:
-    def __init__(self,archivo_memoria="modelos_langchain\memoria.json",input_inicial="Eres un asistente amable que recuerda toda la conversación anterior."):
-        
+    def __init__(self,archivo_memoria="modelos_langchain\memoria.json",input_inicial="Eres un asistente amable que recuerda toda la conversación anterior.",ai="google"):
         # Modelo
-        self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
+        if ai.strip().lower()=="google":
+            os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+            self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.7)
+        else:
+            os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+            self.llm = ChatOpenAI(
+            model="gpt-4.1",   # o el que quieras: gpt-4.1, gpt-4.1-preview, o3-mini...
+            temperature=0.7
+            )
 
         # Prompt con memoria
         self.prompt = ChatPromptTemplate.from_messages([
@@ -73,4 +81,4 @@ class ChatMemoriaArchivo:
             print("IA: ",self.ejecutar_con_memoria(prompt))
 
 # --- Prueba ---
-ChatMemoriaArchivo().chat()
+#ChatMemoriaArchivo().chat()

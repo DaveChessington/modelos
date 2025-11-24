@@ -2,6 +2,7 @@
 from PyQt5 import QtWidgets,uic,QtCore
 from PyQt5.QtCore import QPropertyAnimation
 from modelos_langchain.llmchain_1 import AsistenteTematico
+from modelos_langchain.sequientialchain_2 import CadenaSecuencial
 
 class Load_ventana_modelos_Langchain(QtWidgets.QDialog):
     def __init__(self):
@@ -30,6 +31,7 @@ class Load_ventana_modelos_Langchain(QtWidgets.QDialog):
         self.boton_1.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.llmchain1))
         self.boton_enviar.clicked.connect(lambda: self.llmchain())
         self.boton_2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.sequentialchain2))
+        self.boton_enviar_2.clicked.connect(lambda: self.sequentialchain())
         self.boton_3.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.simplesequentialchain3))
         self.boton_4.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.parseo4))
         self.boton_5.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.varios_pasos5))
@@ -44,8 +46,13 @@ class Load_ventana_modelos_Langchain(QtWidgets.QDialog):
         respuesta=ia.preguntar_tema(self.tema)
         self.output_response.setText(respuesta)
 
-    def sequentialchain():
-        pass
+    def sequentialchain(self):
+        self.contexto=self.input_contexto_2.text()
+        self.prompt_1=self.input_instruccion_1.text()
+        self.prompt_2=self.input_instruccion_2.text()
+        ia=CadenaSecuencial()
+        respuesta=ia.encadenar(self.contexto,self.prompt_1,self.prompt_2)
+        self.output_response_2.setText(respuesta)
 
     # 6.- mover ventana
     def mousePressEvent(self, event):
