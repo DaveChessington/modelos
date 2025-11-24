@@ -46,4 +46,4 @@ class Parse:
 
         return self.resultado
 
-#print(Parse().parse_prompt("traduce al inglés","""Las ciencias de la computación son un campo de estudio que se enfoca en las bases teóricas de la información y la computación, así como en su aplicación para diseñar y desarrollar sistemas computacionales. El estudio abarca desde los algoritmos y la teoría de la computación hasta la inteligencia artificial, el hardware y el software, con el objetivo de resolver problemas complejos. """))
+#print(Parse().parse_prompt("traduce al inglés","""Las ciencias de la computación son un campo de estudio que se enfoca en las bases teóricas de la información y la computación, así como en su aplicación para diseñar y desarrollar sistemas computacionales. El estudio abarca desde los algoritmos y la teoría de la computación hasta la inteligencia artificial, el hardware y el software, con el objetivo de resolver problemas complejos.   """))

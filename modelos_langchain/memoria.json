@@ -47,6 +47,110 @@
     {
       "type": "ai",
       "content": "Sí, recuerdo toda nuestra conversación.\n\nEmpezamos cuando te presentaste como **David**. Luego te conté un **chiste** sobre pájaros y Twitter, que te hizo reír. Después, te recomendé el libro **\"Cien años de soledad\"** de Gabriel García Márquez. Finalmente, me preguntaste si sabía quién eras (y te confirmé que eres David) y de qué habíamos hablado, lo cual te resumí."
+    },
+    {
+      "type": "human",
+      "content": "recurdas de que hablamos"
+    },
+    {
+      "type": "ai",
+      "content": "Sí, claro que recuerdo de qué hablamos.\n\nHasta ahora, nuestra conversación ha sido así:\n\n*   Te presentaste como **David**.\n*   Te conté un **chiste** (el de los pájaros y Twitter).\n*   Te recomendé un **libro** ('Cien años de soledad').\n*   Me preguntaste si sabía quién eras, y te confirmé que eres David.\n*   Y ahora me has preguntado dos veces de qué hablamos, lo cual te he resumido."
+    },
+    {
+      "type": "human",
+      "content": "hola "
+    },
+    {
+      "type": "ai",
+      "content": "¡Hola, David! Es un gusto saludarte de nuevo."
+    },
+    {
+      "type": "human",
+      "content": "rec"
+    },
+    {
+      "type": "ai",
+      "content": "¡Hola, David!\n\nSí, recuerdo nuestra conversación. Hasta ahora hemos hablado de:\n\n*   Tu nombre: **David**.\n*   Un **chiste** que te conté (el de los pájaros y Twitter).\n*   Un **libro** que te recomendé ('Cien años de soledad').\n*   Y varias veces hemos confirmado que recuerdo tu nombre y el contenido de nuestra charla.\n\n¿En qué puedo ayudarte hoy?"
+    },
+    {
+      "type": "human",
+      "content": "Hola, soy David."
+    },
+    {
+      "type": "ai",
+      "content": "¡Hola, David! Es un placer conocerte. ¿En qué puedo ayudarte hoy?"
+    },
+    {
+      "type": "human",
+      "content": "¿Puedes contarme un chiste?"
+    },
+    {
+      "type": "ai",
+      "content": "¡Claro! Aquí tienes uno: ¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter."
+    },
+    {
+      "type": "human",
+      "content": "Jajaja, muy bueno. ¿Puedes recomendarme un libro?"
+    },
+    {
+      "type": "ai",
+      "content": "Por supuesto, te recomiendo 'Cien años de soledad' de Gabriel García Márquez. Es una obra maestra de la literatura latinoamericana."
+    },
+    {
+      "type": "human",
+      "content": "sabes quien soy?"
+    },
+    {
+      "type": "ai",
+      "content": "Sí, recuerdo que eres David."
+    },
+    {
+      "type": "human",
+      "content": "de que hablamos?"
+    },
+    {
+      "type": "ai",
+      "content": "Claro, hemos hablado de lo siguiente:\n\n1.  Me dijiste que te llamas **David**.\n2.  Te conté un **chiste** sobre pájaros y redes sociales.\n3.  Te recomendé un **libro**: 'Cien años de soledad' de Gabriel García Márquez."
+    },
+    {
+      "type": "human",
+      "content": "recurdas nuestra conversación"
+    },
+    {
+      "type": "ai",
+      "content": "Sí, recuerdo toda nuestra conversación.\n\nEmpezamos cuando te presentaste como **David**. Luego te conté un **chiste** sobre pájaros y Twitter, que te hizo reír. Después, te recomendé el libro **\"Cien años de soledad\"** de Gabriel García Márquez. Finalmente, me preguntaste si sabía quién eras (y te confirmé que eres David) y de qué habíamos hablado, lo cual te resumí."
+    },
+    {
+      "type": "human",
+      "content": "recurdas de que hablamos"
+    },
+    {
+      "type": "ai",
+      "content": "Sí, claro que recuerdo de qué hablamos.\n\nHasta ahora, nuestra conversación ha sido así:\n\n*   Te presentaste como **David**.\n*   Te conté un **chiste** (el de los pájaros y Twitter).\n*   Te recomendé un **libro** ('Cien años de soledad').\n*   Me preguntaste si sabía quién eras, y te confirmé que eres David.\n*   Y ahora me has preguntado dos veces de qué hablamos, lo cual te he resumido."
+    },
+    {
+      "type": "human",
+      "content": "hola "
+    },
+    {
+      "type": "ai",
+      "content": "¡Hola, David! Es un gusto saludarte de nuevo."
+    },
+    {
+      "type": "human",
+      "content": "rec"
+    },
+    {
+      "type": "ai",
+      "content": "¡Hola, David!\n\nSí, recuerdo nuestra conversación. Hasta ahora hemos hablado de:\n\n*   Tu nombre: **David**.\n*   Un **chiste** que te conté (el de los pájaros y Twitter).\n*   Un **libro** que te recomendé ('Cien años de soledad').\n*   Y varias veces hemos confirmado que recuerdo tu nombre y el contenido de nuestra charla.\n\n¿En qué puedo ayudarte hoy?"
+    },
+    {
+      "type": "human",
+      "content": "recuerdas la conversación"
+    },
+    {
+      "type": "ai",
+      "content": "Sí, David, recuerdo perfectamente toda nuestra conversación, incluyendo que me has preguntado varias veces si la recordaba.\n\nHemos hablado de lo siguiente:\n\n1.  Te presentaste como **David**.\n2.  Te conté un **chiste** sobre pájaros y Twitter, que te pareció divertido.\n3.  Te recomendé el libro **'Cien años de soledad'** de Gabriel García Márquez.\n4.  Luego, en varias ocasiones, me has preguntado si sabía quién eras (confirmé que eres David), de qué habíamos hablado (te lo he resumido varias veces) y si recordaba la conversación.\n\nAsí que sí, tengo todo el historial presente. ¿Hay algo más en lo que pueda ayudarte, David?"
     }
   ]
 }

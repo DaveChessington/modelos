@@ -10,7 +10,7 @@ load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
 class ChatMemoriaArchivo:
-    def __init__(self,archivo_memoria="modelos_langchain\memoria.json",input_inicial="Eres un asistente amable que recuerda toda la conversación anterior.",ai="google"):
+    def __init__(self,MEMORY_FILE=r"modelos_langchain\memoria.json",input_inicial="Eres un asistente amable que recuerda toda la conversación anterior.",ai="google"):
         # Modelo
         if ai.strip().lower()=="google":
             os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
@@ -28,9 +28,9 @@ class ChatMemoriaArchivo:
             ("placeholder", "{history}"),
             ("human", "{input}")
         ])
-
+        
         # Archivo donde se guardará la memoria
-        self.MEMORY_FILE = archivo_memoria
+        self.MEMORY_FILE=MEMORY_FILE
 
         # Crear memoria
         self.memory = ConversationBufferMemory(return_messages=True)
